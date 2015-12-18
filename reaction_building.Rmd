@@ -3,3 +3,13 @@
 
 * Assumptions of chemical reactions, at what levels chemical reactions are described?
 * Why model molecules in terms of holoenzyme complex?
+* Reaction types:  
+    a -> b  
+    a + b -> c  
+    c->a + b  
+    [reaction condition]
+* Principles of reactions:
+    reactions are defined at a subunit level;
+    molecule connections are preserved.  
+  
+  [back to index](index.html)
