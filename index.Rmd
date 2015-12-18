@@ -1,0 +1,11 @@
+---
+title: "A sketch"
+output: html_document
+---
+
+#### Sketches of my dissertation project.
+
+
+[Outline](outline.html)
+
+[Reaction building](reaction_building.html)

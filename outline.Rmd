@@ -1,0 +1,29 @@
+
+### Outline
+
+#### Introduction
+* How calcium reaches the nucleus: local mode through nanodomains or global mode through cytosol
+* Model building and Qs: 
+    + Nanodomain model cascades: Ca^2+^, CaM, CaMKII
+    + More concentrated CaM and \(\beta\)CaMKII at the nanodomain
+    + Shuttle proteins: complex proteins such as \(\gamma\)CaMKII vs monomeric CaMKI or CaMKIV
+    + Does CaM Ca binding play a role?
+    + Specifics about L-type channels: is CDI critical? What about CDF? In other words, patterns of Ca^2+^ influx.
+    + Reactions in the nulcues is important (breaking the equilibrium of Ca^2+^ flux)
+
+#### Methods
+
+* Three compartments: the nanodomain, the cytosol and the nucleus
+* The signaling cascade includes Ca^2+^ CaM binding, Ca^2+^/CaM CaMKII binding, CaMKII autophosphorylation and trapping, interactions between \(\beta\)CaMKII and \(\gamma\)CaMKII
+    + elaborate on reaction network building and simulation
+
+
+#### Results
+
+* Cascades work properly in terms of delivering Ca^2+^ influx to the nucleus
+* More concentrated CaM in the nanodomain vs uniform concetration of CaM
+* CaMKII complex vs monomeric CaMKIs
+* Input patterns of Ca^2+^ influx: steady influx, Ca^2+^ spikes, or spikes with CDI
+
+
+[Index](index.html)

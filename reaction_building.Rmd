@@ -1,0 +1,5 @@
+
+#### Reaction building
+
+* Assumptions of chemical reactions, at what levels chemical reactions are described?
+* Why model molecules in terms of holoenzyme complex?
