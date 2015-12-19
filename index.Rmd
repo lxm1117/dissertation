@@ -3,7 +3,8 @@ title: "A sketch"
 output: html_document
 ---
 
-#### A sketche of my dissertation project  
+##### A sketch of my dissertation project  
 
-[Outline](outline.html)  
+[Outline](outline.html)
+[Modeling](Modeling.html)
 [Reaction building](reaction_building.html)  

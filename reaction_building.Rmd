@@ -8,8 +8,8 @@
     a + b -> c  
     c->a + b  
     [reaction condition]
-* Principles of reactions:
-    reactions are defined at a subunit level;
+* Principles of reactions:  
+    reactions are defined at a subunit level;  
     molecule connections are preserved.  
   
   [back to index](index.html)

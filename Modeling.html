@@ -61,15 +61,17 @@ img {
 
 
 
-<div id="reaction-building" class="section level4">
-<h4>Reaction building</h4>
-<ul>
-<li>Assumptions of chemical reactions, at what levels chemical reactions are described?</li>
-<li>Why model molecules in terms of holoenzyme complex?</li>
-<li>Reaction types:<br />a -&gt; b<br />a + b -&gt; c<br />c-&gt;a + b<br />[reaction condition]</li>
-<li>Principles of reactions:<br />reactions are defined at a subunit level;<br />molecule connections are preserved.</li>
-</ul>
-<p><a href="index.html">back to index</a></p>
+<div id="compartments" class="section level5">
+<h5>Compartments</h5>
+<p>The model represents a randomly selected part from a spherical cell body with a radius of 5 <span class="math">\(\mu\)</span>m. The approximate pyramid shape implies that the model geometry and its exact location in the cell minimally affect the simulation results. The base of the pyramid represents the cell membrane and the tip represents the center of the nucleus. The model consists of three compartments: the nanodomain, the cytosol and the nucleus. The compartments are built with one or more cubes and cascaded together to approximate a pyramid geometry. The approximation is necessary because the parallel side surfaces of cubes are essential for periodic boundary conditions.</p>
+</div>
+<div id="boundary-conditions" class="section level5">
+<h5>Boundary conditions</h5>
+<p>Considering that the model represents a randomly selected sample from the cell body, we construct the side surfaces as periodic in order to simulate a homogenous surroundings within the cell. The cell membrane surface at the base of the pyramid is reflective. In addition, surfaces that connect the “inside” and “outside” of the model are reflective. Therefore the whole model is a closed systems and all reactions happen inside the model. Surfaces that are “inside” and connect between compartments are either transmittent or reflective, dependning on molecules. For example, the surface between the cytosol and the nucleus is reflective to <span class="math">\(\beta\)</span>CaMKII but transmittent to all other molecules[ref].</p>
+</div>
+<div id="molecules-and-reactions" class="section level5">
+<h5>Molecules and reactions</h5>
+<p>We focus on how Ca<sup>2</sup> enter the cell the L-type Ca2+</p>
 </div>
 
 

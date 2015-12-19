@@ -1,0 +1,13 @@
+
+##### Compartments
+
+The model represents a randomly selected part from a spherical cell body with a radius of 5 \(\mu\)m. The approximate pyramid shape implies that the model geometry and its exact location in the cell minimally affect the simulation results. The base of the pyramid represents the cell membrane and the tip represents the center of the nucleus. The model consists of three compartments: the nanodomain, the cytosol and the nucleus. The compartments are built with one or more cubes and cascaded together to approximate a pyramid geometry. The approximation is necessary because the parallel side surfaces of cubes are essential for periodic boundary conditions. 
+
+
+##### Boundary conditions   
+
+Considering that the model represents a randomly selected sample from the cell body, we construct the side surfaces as periodic in order to simulate a homogenous surroundings within the cell. The cell membrane surface at the base of the pyramid is reflective. In addition, surfaces that connect the "inside" and "outside" of the model are reflective. Therefore the whole model is a closed systems and all reactions happen inside the model. Surfaces that are "inside" and connect between compartments are either transmittent or reflective, dependning on molecules. For example, the surface between the cytosol and the nucleus is reflective to \(\beta\)CaMKII but transmittent to all other molecules[ref].  
+
+##### Molecules and reactions
+
+We focus on how Ca^2^ enter the cell the L-type Ca2+
