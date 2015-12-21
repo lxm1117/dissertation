@@ -10,4 +10,16 @@ Considering that the model represents a randomly selected sample from the cell b
 
 ##### Molecules and reactions
 
-We focus on how Ca^2^ enter the cell the L-type Ca2+
+We focus on modeling how Ca^2^ ions enter the cell from the L-type Ca^2+^ channels, being taken up by CaM, form a complex and bind with \(\beta\) and \(\gamma\)CaMKIIs. Major players in the model include Ca^2+^, CaM, \(\beta\) and \(\gamma\)CaMKIIs. CaM has been reported as highly concentrated in the nanodomain near the Ca^2+^ channels [ref]. Therefore we added membrane-attached neurogranin molecules (Ng) in the nanodomain to bind with apoCaMs so that the CaM concentration there can be kept at a mM level. Upon Ca^2+^ influx, these CaMs can be released from Ng to bind with Ca^2+^. Ca^2+^-CaMs bindings occur at the N lobes and C lobes separately, with different kinetics, using parameters from [ref]. 
+
+CaMKIIs are modeled as a 6-subunits ring complex. This is a simplification from its original 12-subunits structure with two rings layered together. But compared with studies that model only individual subunits, a 6-subunit structure captures the combinitorial complexity of a holoenzyme. Reaction stages for a single subunit include Ca^2+^-CaM binding, autophosphorylation at Thr286, trapping of Ca^2+^-CaM and dephosphorylation. In particualr, a CaMKII subunit can bind with CaMs having varying number of Ca^2+^s. A CaM bound CaMKII can further bind with Ca^2+^ molecules if the CaM is not fully loaded. Autophosphorylation occurs between two neighboring subunits in a one-direction manner. To get phosphorylated, the subunit has to be bound with CaM and its direct neighbor has to be either bound or phosphorylated. Once phosphorylated, CaMs become less likely to unbound from CaMKIIs. That is, CaMKIIs have trapped CaMs. The final stage is dephosphorylation at Thr286. Once the CaMKII subunit becomes unbound and dephosphorylated, it is considered back to the initial inactive state.
+
+We assume that \(\beta\)CaMKIIs follow the reaction stages as above described. For \(\gamma\)CaMKIIs, the intraholoenzyme autophosphorylation is reported as slow [ref]. Instead, it was suggested that interholoenzyme phosphorylations by \(\beta\)CaMKIIs occur more often [ref]. Therefore phosphorylations of \(\gamma\)CaMKIIs by \(\beta\)CaMKIIs are included in the model. The kinetic parameters of binding, unbinding and phosphorylation are borrowed from the modelling study by Pepke et al.
+
+Finally downstream reactions in the nucleus with Ca^2+^ and CaM are included.[need expanding] 
+
+##### Initial condition and Simulation
+The model starts with fixed concentration levels of Ca^2+^, CaM and CaMKIIs in different compartments [table 1]. Steady states (i.e., no flux of Ca^2+^ and CaM between compartments) were calculated using COPASI to find out the corresponding concentrations of other molecules.
+
+Simulation time step
+

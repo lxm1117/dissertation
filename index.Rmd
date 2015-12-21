@@ -8,3 +8,4 @@ output: html_document
 [Outline](outline.html)<br> 
 [Modeling](Modeling.html)<br> 
 [Reaction building](reaction_building.html)<br>
+[Abbreviations](Abbreviations.html)<br>

@@ -1,0 +1,4 @@
+|:----------|----------:|
+|CaM|calmodulin|
+|Ng|neurogranin|
+|CaMKII|    calcium-calmodulin kinase II|
