@@ -1,25 +1,43 @@
 
 #### Reaction network
 
-The chemical reactions included in the network are all elementary reactions, or single-step reactions. Reaction orders are defined by the number of reactants involved. For example, two reactants binding is a second order reaction. The corresponding unbinding reaction is first order. In the reactions network, only first and second order reactions are included. All reactions are described at the single molecule level. For complex holoenzymes that consist of multiple subunits, reactions apply for the individual subunits. When building the reaction network, Ca^2+^, calmodulin, neurogranin are modeled as single subunit molecules. CaMKIIs are modeled as 6-subunits complex. 
+Why model *this* way?<br>
+The chemical reactions included in the network are all elementary reactions, or single-step reactions. These reaction can be either first order or second order, depending on the number of reactants involved. For example, two reactants binding is a second order reaction. The corresponding unbinding reaction is first order. All reactions are described at the single molecule level. For complex holoenzymes that consist of multiple subunits, reactions apply for the individual subunits. When building the reaction network, Ca^2+^, calmodulin, neurogranin are modeled as single subunit molecules. CaMKIIs are modeled as 6-subunits complex. 
 
-One purpose to model CaMKIIs as complex molecules is to capture its detailed interactions with calmodulin and its dynamics with neighbor subunits. Previous experiment studies have shown that CaMKIIs exihibit complicated activation phases depending on the binding state with calmodulin and Ca^2+^. Their intra-holoenzyme autophosphorylation also allows cooperativity among subunits, enabling CaMKII to code a Ca^2+^ influx pattern to the downstream signaling cascades in a frequency-dependent manner. Each CaMKII subunit can undergo 4 general activity states: bound with Ca^2+^-CaM, phosphorylated at Thr286, bound and phosphorylated, and neither bound nor phosphorylated. When consider the subunits of a complex collectively, there comes a problem to enumerate all possible combinations of different subunit states. The number of possible combinations increases rapidly with the number of total subunits and the level of details included for a single subunit activity states. For a 6-subunit complex, assuming each subunit has 4 states, there are 3 possible ways that 2 subunits get bound, 4 possible ways for 3 bound, and 3 possible ways for 2 bound. A similar pattern applies to describe phosphorylation states. When consideirng binding and phosphoryaltion together, however, the situation becomes more intricated. Ignoring the graph characteristics among subunits and the interdependency between states, a rough way to estimate the total possible combinations is number of states^number of subunits^. This gives an overestimation because the graph property of the ring structure leads to redundant combinations. But it generally shows the combanitoric complexity of subunit states.               
+One purpose to model CaMKIIs as complex molecules is to capture its detailed interactions with CaM and the dynamics with neighbor subunits. Previous experiment studies have shown that CaMKIIs exihibit complicated activation phases depending on the binding state with calmodulin and Ca^2+^. Their intra-holoenzyme autophosphorylation also allows cooperativity among subunits, enabling CaMKII to code a Ca^2+^ influx pattern to the downstream signaling cascades in a frequency-dependent manner. Each CaMKII subunit can undergo 4 general activity states: bound with Ca^2+^-CaM, phosphorylated at Thr286, bound and phosphorylated, and neither bound nor phosphorylated. When consider the subunits of a complex collectively, there comes a problem to enumerate all possible combinations of different subunit states. The number of possible combinations increases rapidly with the number of total subunits and the level of details included for a single subunit activity states. For a 6-subunit complex, assuming each subunit has 4 states, there are 3 possible ways that 2 subunits get bound, 4 possible ways for 3 bound, and 3 possible ways for 2 bound. A similar pattern applies to describe phosphorylation states. When consideirng binding and phosphoryaltion together, however, the situation becomes more intricated. Ignoring the graph characteristics among subunits and the interdependency between states, a rough way to estimate the total possible combinations is number of states^number of subunits^. This gives an overestimation because the graph property of the ring structure leads to redundant combinations. But it generally shows the combanitoric complexity of subunit states.               
 
-Our initial approach was to treat a complex as an entity. Then different combinations of subunit states are considered as different molecule species. Reactions are described at the level of a complex, ignoring how individual subunits interact. BioNetGen was used to expand the whole network before simulation running and then feed into Smoldyn as a separate file. A few problems arise with this approach. The first is a computational bottleneck. A CaMKII complex was modeled with 6 subunits and each contains 4 states. On a desktop with 16 CPUs at 3.40GHz, it takes BioNetGen 9 hours to generate the network, which contains total 1401 species and 721105 reactions. Reading the network file to Smoldyn took another approxiamtely 2 hours. When further subunits states were added, for example more binding states between CaMKII and CaM, the network size became unmanagbly huge and it took more than 24 hours to generate. A second issue regards to a hidden assumption that within a single time step, only one subunit is allowed to react, given that reactions are all elementary.     
+Our initial approach was to treat a complex as an entity. Then different combinations of subunit states are considered as different molecule species. Reactions are described at the level of a complex, ignoring how individual subunits interact. BioNetGen was used to expand the whole network before simulation running and then feed into Smoldyn as a separate file. A few problems arise with this approach. The first is a computational bottleneck. A CaMKII complex was modeled with 6 subunits and each contains 4 states. On a desktop with 16 CPUs at 3.40GHz, it takes BioNetGen 9 hours to generate the network, which contains total 1401 species and 721105 reactions. Reading the network file to Smoldyn took another approxiamtely 2 hours. When further subunits states were added, for example more binding states between CaMKII and CaM, the network size became unmanagbly huge and it took more than 24 hours to generate. A second issue regards to a hidden assumption. Since reactions are all elementary, for a complex it implies that within a single time step only one subunit of a complex is allowed to react. This contradicts an intuitive view how protein molecules interact. For example, one CaMKII subunit binding with a CaM should not affect whether other subunits being able to bind or not. This conceptual issue can be resolved if we describe reactions at a subunit level instead of a complex level. A third caveat is to do with the molecule size. By treating a complex as a single entity, a complex is assumed to take the same space as a single molecule. However it has been known that an holoenzyme such as CaMKII is about 100 times molecular weigtht of a CaM, not to mention a Ca^2+^ ion.
 
+By modeling at a subunit level,  we can fix the aforementioned issues. Reactions are described for subunits, therefore nulling the combanitoric complexity issues and reducing the total numbers of reactions that are needed withouth sacrificing the model details. In addition, subunits can react independently and  their physical positions can be modeled seperately from each other.
 
-* Assumptions of chemical reactions, at what levels chemical reactions are described?
-* Why model molecules in terms of holoenzyme complex?
-* Reaction types:  
-    a -> b  
-    a + b -> c  
-    c->a + b  
-    [reaction condition]
-* Principles of reactions:  
-    reactions are defined at a subunit level;  
-    molecule connections are preserved.  
-  
+How to model *this* way?<br>
+We customized an open source simulator Smoldyn by allowing subunits of a complex to diffuse together but react independently. A few new reaction schemes were added to adapt complex molecules. A general principle for these new schemes is to preserve subunits connections.
 
+* fist order reaction: A -> B<br>
+A subunit in a complex changes its molecule identity from A to B while stay connected to its neighbors.
+* first order reaction with conditions: [conditions] A -> B<br>
+This scheme is used to describe autophosphorylation among CaMKII subunits, in which as long as a subunit gets bound by CaM, if its left (or right) neighbor is also bound or phosphorylated, the subunit can become phosphorylated. 
+* second order binding reaction A + B -> C<br>
+When a complex subunit A binds with a single molecule B, A will change its identity to C, and B will simply be removed. When A and B are both complex subunits, B will be linked to A, located at the same place and move together. In addition, B’s connections with its neighbors stay intact. This ensures when reversal unbinding happens A and B can seperate back into their original forms.
+* first order unbinding reaction C -> A + B<br>
+If at least one product is a single molecule, for example the molecule B, then C changes its identiy to A and an additional single molelucle B gets generated. If C results from the binding of two complex subunits, then the link between the two subunits breaks, allowing them to diffuse seperately with their orignal complexes.
+
+ 
+Detailed reaction network, subunit states<br>
+
+* Ng and apoCaM<br>
+Ng are assigned to locate in the nanodomain, attaching the cell surface, binding and immobilizing apoCaM, allowing a high concentration of apoCaM in the nanodomain relative to other compartments.
+* Ca^2+^ and CaM<br>
+Ca^2+^-CaM interactions are modeled using schemes from Faas et al.(2001). N- and C-lobes of CaM exhibit different binding and unbinding rates, and are modeled seperately. There are 9 CaM binding states and each can bind with CaMKII subunit.<br>
+* Ca^2+^, CaM and CaMKII<br>
+CaMKII subunit can all 9 states of CaM. In addition, CaM-CaMKII can also pick up free Ca^2+^. As long as the CaM binding site on CaMKII has been take up, the kinase domain of CaMKII becomes open, and CaMKII can phosphorylate or gets phosphorylated depending on the Thr286 site state.
+* \(\beta\)- and \(\gamma\)-CaMKIIs<br>
+It has been assumed that \(\beta\)-CaMKII get fast phosphorylated and facilitate the phosphorylation of \(\gamma\)-CaMKIIs. To model their interactions, following a similar scheme in Pepke et al. (2010), we assume the subsequent elementary steps occur between subunits of the two complexes. In particular, b is short for bound and p is short for phosphorylated.<br>
+beta(b or p) + gamma(b) -> beta-gamma<br>
+beta-gamma -> beta(b or p) + p-gamma(b)<br>
+beta-gamma -> p-beta(b) + gamma(b)<br>
+* Ca^2+^ pumps<br>
+To model Ca^2+^ extrusion, we added pumps in the surface membrane to bind free Ca^2+^s and carry them to the extracellular space. The number of pumps added was estimated based on a density in , and we assume that pumps fill only up to 30% of cell membrane surface.
 
 
 

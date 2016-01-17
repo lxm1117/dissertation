@@ -21,5 +21,6 @@ Finally downstream reactions in the nucleus with Ca^2+^ and CaM are included.[ne
 ##### Initial condition and Simulation
 The model starts with fixed concentration levels of Ca^2+^, CaM and CaMKIIs in different compartments [table 1]. Steady states (i.e., no flux of Ca^2+^ and CaM between compartments) were calculated using COPASI to find out the corresponding concentrations of other molecules.
 
-Simulation time step
+Simulation timestep
 
+The timestep has to be small enough to reveal the appropriate spatial resolution and large enough to ensure the simulation speed. Criteria for timestep selection have been suggested by Smoldyn, depending on the model spatial resolution, types and characteristics of reactions involved. Following the instructions given by Smoldyn, we chose \(\delta\)t to be 0.0001  msec, mainly deptermined by the highest reaction rate constants of first order reactions. We also noticed that a short timestep allows unbinding radius of certain reverse reactions to be calculated. 
