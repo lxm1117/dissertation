@@ -1,0 +1,16 @@
+#####Effeciency with intraholoenzyme phosphorylation
+Originally proposed by Ma et al. (2014 and 2015), phosphorylations of \(\gamma\)CamKIIs by \(\beta\) subunits can facilitate the transporation of Ca^2+^ and CaM to the nucleus. There have been questions on the efficiency of such a mechanism,  considering that these complexes are relatively slow diffusing. Experimental studies on PV+ interneurons have also indicated similar phosphorylation and shuttling mechanism to transport Ca^2+^-CaM, but through monomeric CaMKK and CaMKI. How would a holoenzyme mediated pathway differ from a functionally similar pathway mediated by monomeric proteins? One suggestion is that how Ca^2+^ ions get transported may be related with how they flow into the cell. The frequency of Ca^2+^ may be a factor. An influx with high frequency but relatvely small amount may need fast process through fast binding and being carried to the nucleus. Also the cell size may determine the capacity of total Ca^2+^ input and the type of Ca^2+^ buffer proteins the cell can utilitize. Borrowing an analogy, holoenzymes versus monomerics are like shuttle buses versus small vehicles. Which transportation is more economic depends on the amount of travellers and traffic. Interestingly, Ca^2+^ influx to PV+ interneurons is relatively higher than in primary neurons.
+
+On the other hand, can intraholoenzyme interactions allow special higher level structures to emerge and provide efficiency?  
+Computation of implementation for molecules?
+
+
+#####The necessity of a nanodomain
+
+
+
+
+#####Ca^2+^ input pattern matters
+
+
+######CDI, CDF, CaM modulation, etc

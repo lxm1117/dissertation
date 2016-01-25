@@ -8,4 +8,6 @@ output: html_document
 [Outline](outline.html)<br> 
 [Modeling](Modeling.html)<br> 
 [Reaction building](reaction_building.html)<br>
+[Smoldyn in brief](Smoldyn_in_brief.html)<br>
+[Research questions](Research_questions.html)<br>
 [Abbreviations](Abbreviations.html)<br>

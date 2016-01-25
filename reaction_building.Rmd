@@ -32,10 +32,12 @@ Ca^2+^-CaM interactions are modeled using schemes from Faas et al.(2001). N- and
 * Ca^2+^, CaM and CaMKII<br>
 CaMKII subunit can all 9 states of CaM. In addition, CaM-CaMKII can also pick up free Ca^2+^. As long as the CaM binding site on CaMKII has been take up, the kinase domain of CaMKII becomes open, and CaMKII can phosphorylate or gets phosphorylated depending on the Thr286 site state.
 * \(\beta\)- and \(\gamma\)-CaMKIIs<br>
-It has been assumed that \(\beta\)-CaMKII get fast phosphorylated and facilitate the phosphorylation of \(\gamma\)-CaMKIIs. To model their interactions, following a similar scheme in Pepke et al. (2010), we assume the subsequent elementary steps occur between subunits of the two complexes. In particular, b is short for bound and p is short for phosphorylated.<br>
+It has been assumed that \(\beta\)-CaMKII get fast phosphorylated and facilitate the phosphorylation of \(\gamma\)-CaMKIIs. To model their interactions, according to a similar scheme in Pepke et al. (2010), we assume the following elementary steps occur between subunits of the two complexes. In the equations, b stands for bound and p stands for phosphorylated.<br>
 beta(b or p) + gamma(b) -> beta-gamma<br>
 beta-gamma -> beta(b or p) + p-gamma(b)<br>
 beta-gamma -> p-beta(b) + gamma(b)<br>
+For each pair of beta and gamma complex, bindings between them are allowed within one pair of subunits only. That is, a binding by sharing a vertice is allowed but by sharing an edge is prohibited. The latter form occurs much more rarely than the first form (once in 1 sec vs. around 4000 times in 1 sec simulation), indicating it’s more likely an exception of the simulation instead of a biologically realistic mechanism. 
+
 * Ca^2+^ pumps<br>
 To model Ca^2+^ extrusion, we added pumps in the surface membrane to bind free Ca^2+^s and carry them to the extracellular space. The number of pumps added was estimated based on a density in , and we assume that pumps fill only up to 30% of cell membrane surface.
 
